@@ -33,6 +33,14 @@ async function run() {
         const favMovies = movies_DB.collection("favMovies");
 
 
+        // add movie
+        app.post('/movies', async (req, res) => {
+            const newMovie = req.body;
+            console.log(newMovie);
+            const result = await movies.insertOne(newMovie)
+            res.send(result)
+        })
+
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");

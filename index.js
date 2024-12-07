@@ -54,6 +54,27 @@ async function run() {
             const result = await movies.insertOne(newMovie)
             res.send(result)
         })
+         // edit movies
+         app.put('/movies/:id', async (req, res) => {
+            const id = req.params.id;
+            const updateCoffee = req.body;
+            const filter = { _id: new ObjectId(id) }
+            const options = { upsert: true };
+            const coffee = {
+                $set: {
+                    title: updateCoffee.title,
+                    poster: updateCoffee.poster,
+                    duration: updateCoffee.duration,
+                    release_year: updateCoffee.release_year,
+                    genre: updateCoffee.genre,
+                    ratingValue: updateCoffee.ratingValue,
+                    summary: updateCoffee.summary,
+
+                }
+            }
+            const result = await movies.updateOne(filter, coffee, options);
+            res.send(result);
+        })
 
         // Send a ping to confirm a successful connection
         await client.db("admin").command({ ping: 1 });

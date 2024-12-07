@@ -98,6 +98,14 @@ async function run() {
             res.send(result)
         })
 
+        // create favorite movies
+        app.post('/favorite', async (req, res) => {
+            const newFav = req.body;
+            console.log(newFav);
+            const result = await favMovies.insertOne(newFav)
+            res.send(result)
+        })
+
 
 
         // Send a ping to confirm a successful connection

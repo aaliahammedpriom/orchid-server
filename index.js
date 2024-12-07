@@ -83,6 +83,13 @@ async function run() {
             res.send(result)
         })
 
+        // users server side
+        // read user
+        app.get('/users', async (req, res) => {
+            const cursor = users.find();
+            const result = await cursor.toArray();
+            res.send(result);
+        })
         //create user
         app.post('/users', async (req, res) => {
             const newUser = req.body;

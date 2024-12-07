@@ -112,6 +112,14 @@ async function run() {
             const result = await favMovies.insertOne(newFav)
             res.send(result)
         })
+        // delete favorite movies
+        app.delete('/favorite/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) };
+            const result = await favMovies.deleteOne(query);
+            res.send(result)
+        })
+
 
 
 

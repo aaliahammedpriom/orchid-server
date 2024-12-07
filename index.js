@@ -98,6 +98,13 @@ async function run() {
             res.send(result)
         })
 
+         // Favorite Movie Server
+        // read favorite movies
+        app.get('/favorite', async (req, res) => {
+            const cursor = favMovies.find();
+            const result = await cursor.toArray();
+            res.send(result);
+        })
         // create favorite movies
         app.post('/favorite', async (req, res) => {
             const newFav = req.body;

@@ -33,6 +33,13 @@ async function run() {
         const favMovies = movies_DB.collection("favMovies");
 
 
+         // movies sereverside
+        // read movies
+        app.get('/movies', async (req, res) => {
+            const cursor = movies.find();
+            const result = await cursor.toArray();
+            res.send(result);
+        })
         // add movie
         app.post('/movies', async (req, res) => {
             const newMovie = req.body;

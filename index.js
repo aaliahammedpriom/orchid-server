@@ -40,6 +40,13 @@ async function run() {
             const result = await cursor.toArray();
             res.send(result);
         })
+         //read movies by id
+         app.get('/movies/:id', async (req, res) => {
+            const id = req.params.id;
+            const query = { _id: new ObjectId(id) }
+            const result = await movies.findOne(query);
+            res.send(result);
+        })
         // add movie
         app.post('/movies', async (req, res) => {
             const newMovie = req.body;

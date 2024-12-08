@@ -25,7 +25,7 @@ async function run() {
 
     try {
         // Connect the client to the server	(optional starting in v4.7)
-        await client.connect();
+        // await client.connect();
         // database add
         const movies_DB = client.db("movies_DB");
         const movies = movies_DB.collection("movies");
@@ -50,7 +50,6 @@ async function run() {
         // add movie
         app.post('/movies', async (req, res) => {
             const newMovie = req.body;
-            console.log(newMovie);
             const result = await movies.insertOne(newMovie)
             res.send(result)
         })
@@ -93,7 +92,6 @@ async function run() {
         //create user
         app.post('/users', async (req, res) => {
             const newUser = req.body;
-            console.log(newUser);
             const result = await users.insertOne(newUser)
             res.send(result)
         })
@@ -108,7 +106,6 @@ async function run() {
         // create favorite movies
         app.post('/favorite', async (req, res) => {
             const newFav = req.body;
-            console.log(newFav);
             const result = await favMovies.insertOne(newFav)
             res.send(result)
         })
@@ -124,7 +121,7 @@ async function run() {
 
 
         // Send a ping to confirm a successful connection
-        await client.db("admin").command({ ping: 1 });
+        // await client.db("admin").command({ ping: 1 });
         console.log("Pinged your deployment. You successfully connected to MongoDB!");
     } finally {
         // Ensures that the client will close when you finish/error

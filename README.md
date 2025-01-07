@@ -135,6 +135,5 @@ The Orchid Movie Server is a Node.js and Express-based backend application that 
 - Ensure your MongoDB database credentials are correct in the `.env` file.
 - Uncomment `await client.connect();` in the `run()` function to enable persistent MongoDB connection.
 
-## License
-This project is licensed under the [MIT License](https://opensource.org/licenses/MIT).
+
 
